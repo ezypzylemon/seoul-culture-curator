@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.env
+
+# Node.js / React
+node_modules/
+build/
+dist/
+.env.local
+.env.development
+.env.production
+
+# macOS / 시스템
+.DS_Store
+Thumbs.db
+
+# 기타 IDE/에디터
+.vscode/
+.idea/
+
+# Logs
+*.log
