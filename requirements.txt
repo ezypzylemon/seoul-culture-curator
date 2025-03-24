@@ -1,0 +1,42 @@
+
+# Python version
+python>=3.8
+
+# Core dependencies
+streamlit==1.29.0
+google-generativeai==0.3.1
+folium==0.15.0
+streamlit-folium==0.15.0
+python-dotenv==1.0.0
+requests==2.31.0
+
+# Data handling
+pandas==2.1.4
+numpy==1.26.2
+
+# UI components
+streamlit-chat==0.1.1
+
+# Map rendering
+branca==0.6.0
+jinja2==3.1.2
+
+# HTTP/Network
+urllib3==2.1.0
+certifi==2023.11.17
+charset-normalizer==3.3.2
+
+# Environment and configuration
+python-dotenv==1.0.0
+
+# Optional but recommended
+ipython==8.18.1  # For development
+jupyter==1.0.0   # For development
+pytest==7.4.3    # For testing
+
+# Additional requirements
+typing-extensions>=4.8.0
+packaging>=23.2
+click>=8.1.7
+markdown-it-py>=3.0.0
+mdurl>=0.1.2
