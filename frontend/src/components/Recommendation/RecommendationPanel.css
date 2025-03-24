@@ -1,0 +1,310 @@
+.recommendation-panel {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.recommendation-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.recommendation-header h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.description {
+  color: #666;
+  font-size: 1rem;
+}
+
+.search-container {
+  display: flex;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.location-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px 0 0 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.location-input:focus {
+  border-color: #4361ee;
+}
+
+.search-button {
+  background-color: #4361ee;
+  color: white;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  padding: 0 1.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.search-button:hover {
+  background-color: #3a56d4;
+}
+
+.search-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background-color: #ffe0e0;
+  color: #d32f2f;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem 0;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(67, 97, 238, 0.2);
+  border-radius: 50%;
+  border-top-color: #4361ee;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.recommendation-results {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.result-header {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.75rem;
+}
+
+.result-header h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.location-name {
+  color: #4361ee;
+}
+
+.result-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.analysis-section {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.analysis-section h4 {
+  background-color: #f8f9fa;
+  padding: 1rem 1.5rem;
+  margin: 0;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.analysis-content {
+  padding: 1.5rem;
+}
+
+.analysis-item {
+  margin-bottom: 1.5rem;
+}
+
+.analysis-item:last-child {
+  margin-bottom: 0;
+}
+
+.analysis-item h5 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.analysis-item p {
+  color: #666;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 4rem 0;
+  color: #888;
+}
+
+.empty-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.6;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.empty-examples {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .result-content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .recommendation-panel {
+    padding: 1rem;
+  }
+  
+  .recommendation-header h2 {
+    font-size: 1.6rem;
+  }
+  
+  .search-container {
+    flex-direction: column;
+  }
+  
+  .location-input {
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .search-button {
+    border-radius: 8px;
+    width: 100%;
+    padding: 0.75rem;
+  }
+}
+
+/* 맞춤 행사 추천 스타일 */
+.personalized-recommendation {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.personalized-recommendation h4 {
+  background-color: #f8f9fa;
+  padding: 1rem 1.5rem;
+  margin: 0;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.recommendation-content {
+  padding: 1.5rem;
+  color: #333;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.recommendation-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.recommendation-content table, .recommendation-content th, .recommendation-content td {
+  border: 1px solid #ddd;
+}
+
+.recommendation-content th, .recommendation-content td {
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.recommendation-content th {
+  background-color: #f5f5f5;
+}
+
+.location-info {
+  color: #4caf50;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.coordinates-info {
+  color: #666;
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+}
+
+/* 맞춤 행사 추천 포맷팅 스타일 */
+.formatted-recommendation h5 {
+  font-size: 1.1rem;
+  color: #444;
+  margin: 1.5rem 0 0.75rem 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.formatted-recommendation h5:first-child {
+  margin-top: 0;
+}
+
+.formatted-recommendation p {
+  margin-bottom: 1rem;
+}
+
+.formatted-recommendation strong {
+  color: #4361ee;
+}
+
+.formatted-recommendation ul, .formatted-recommendation ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.formatted-recommendation li {
+  margin-bottom: 0.5rem;
+}

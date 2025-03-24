@@ -1,0 +1,26 @@
+/* 기본 레이아웃 스타일 */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 60px; /* 기본 사이드바 너비 */
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.3s ease;
+}
+
+.content-area {
+  flex: 1;
+  padding: x1rem;
+  overflow-y: auto;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+}

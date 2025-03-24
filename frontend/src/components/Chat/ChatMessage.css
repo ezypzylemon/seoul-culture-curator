@@ -1,0 +1,113 @@
+.chat-message {
+  display: flex;
+  margin-bottom: 1.5rem;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.user-message {
+  flex-direction: row-reverse;
+}
+
+.message-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  margin: 0 0.5rem;
+  flex-shrink: 0;
+}
+
+.user-message .message-avatar {
+  background-color: rgba(67, 97, 238, 0.1);
+}
+
+.bot-message .message-avatar {
+  background-color: rgba(79, 209, 197, 0.1);
+}
+
+.message-content {
+  background-color: #f4f7fc;
+  padding: 1rem;
+  border-radius: 12px;
+  max-width: 70%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.user-message .message-content {
+  background-color: #4361ee;
+  color: white;
+  border-radius: 12px 2px 12px 12px;
+}
+
+.bot-message .message-content {
+  background-color: white;
+  border: 1px solid #eee;
+  border-radius: 2px 12px 12px 12px;
+}
+
+.message-content p {
+  margin: 0 0 0.75rem 0;
+  line-height: 1.5;
+}
+
+.message-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* 코드 블록 스타일링 */
+.message-content pre {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  padding: 0.75rem;
+  overflow-x: auto;
+  margin: 0.75rem 0;
+}
+
+.user-message .message-content pre {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 마크다운 추가 스타일링 */
+.message-content a {
+  color: #4361ee;
+  text-decoration: none;
+}
+
+.bot-message .message-content a {
+  color: #4361ee;
+}
+
+.user-message .message-content a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.message-content ul, .message-content ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.message-content li {
+  margin-bottom: 0.25rem;
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .message-content {
+    max-width: 80%;
+  }
+}
