@@ -1,8 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from app.api.routes import chat_routes, recommendation_routes, map_routes
 import os
 from dotenv import load_dotenv
+from app.api.services.congestion_db import get_congestion_data
+
 
 # 환경변수 로드
 load_dotenv()
@@ -27,10 +31,9 @@ app.include_router(chat_routes.router, prefix="/api/chat", tags=["chat"])
 app.include_router(recommendation_routes.router, prefix="/api/recommendation", tags=["recommendation"])
 app.include_router(map_routes.router, prefix="/api/map", tags=["map"])
 
-@app.get("/")
-async def root():
-    return {"message": "스마트문화예술 챗봇 API에 오신 것을 환영합니다!"}
+# React 정적 파일 서빙
+app.mount("/", StaticFiles(directory="static", html=True), name="static")
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)
+@app.get("/")
+async def serve_spa():
+    return FileResponse("static/index.html")

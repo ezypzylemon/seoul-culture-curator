@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-// API 기본 URL 설정
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ''; // const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '/api';
+// ✅ API 기본 URL 설정 - "/api" 프리픽스 적용
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '/api';
 
-// API 클라이언트 설정
+// ✅ API 클라이언트 설정
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
   headers: {
@@ -15,7 +15,7 @@ const apiClient = axios.create({
 // 요청 인터셉터 - 모든 요청에 로깅 추가
 apiClient.interceptors.request.use(
   (config) => {
-    console.log(`API 요청: ${config.method.toUpperCase()} ${config.url}`);
+    console.log(`API 요청: ${config.method.toUpperCase()} ${config.baseURL}${config.url}`);
     return config;
   },
   (error) => {
@@ -70,7 +70,7 @@ export const getRecommendations = async (location, userPreferences) => {
 // ✅ 혼잡도 지도 데이터 요청
 export const getCongestionData = async () => {
   try {
-    const response = await apiClient.get('/map/congestion/');
+    const response = await apiClient.get('/api/map/congestion');
     return response.data;
   } catch (error) {
     console.error('혼잡도 데이터 요청 오류:', error);
@@ -81,7 +81,7 @@ export const getCongestionData = async () => {
 // ✅ 특정 지역 혼잡도 정보 요청
 export const getAreaCongestion = async (area) => {
   try {
-    const response = await apiClient.get(`/map/congestion/${encodeURIComponent(area)}/`);
+    const response = await apiClient.get(`/api/map/congestion/${encodeURIComponent(area)}`);
     return response.data;
   } catch (error) {
     console.error('지역 혼잡도 정보 요청 오류:', error);

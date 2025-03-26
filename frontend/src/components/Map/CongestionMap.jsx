@@ -32,8 +32,7 @@ const CongestionMap = () => {
     const fetchCongestionData = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch("/api/congestion");
-        const data = await response.json();
+        const data = await getCongestionData(); // ✅ 수정됨
         setCongestionData(data);
       } catch (err) {
         setError("혼잡도 데이터를 불러오는데 실패했습니다.");
@@ -147,7 +146,7 @@ const CongestionMap = () => {
             areaDetails ? (
               <div className="area-details">
                 <h3>{areaDetails.area} 상세 정보</h3>
-                
+
                 <div className="detail-section">
                   <h4>혼잡도 정보</h4>
                   <div className="detail-item">
@@ -156,7 +155,7 @@ const CongestionMap = () => {
                       {areaDetails.congestion_level}
                     </div>
                   </div>
-                  
+
                   <div className="detail-item">
                     <div className="detail-label">예상 인구</div>
                     <div className="detail-value">

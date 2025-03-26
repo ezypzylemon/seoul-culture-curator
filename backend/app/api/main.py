@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse, JSONResponse
 from app.api.routes import chat_routes, recommendation_routes, map_routes
+from services.congestion_db import get_congestion_data
 import os
 from dotenv import load_dotenv
 
@@ -8,7 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = FastAPI(
-    title="스마트문화예술 챗봇 API", 
+    title="스마트문화예술 챗봇 API",
     description="문화예술 활동 추천 및 실시간 정보 제공 API",
     version="1.0.0"
 )
@@ -27,10 +30,18 @@ app.include_router(chat_routes.router, prefix="/api/chat", tags=["chat"])
 app.include_router(recommendation_routes.router, prefix="/api/recommendation", tags=["recommendation"])
 app.include_router(map_routes.router, prefix="/api/map", tags=["map"])
 
-@app.get("/")
-async def root():
-    return {"message": "스마트문화예술 챗봇 API에 오신 것을 환영합니다!"}
+# /api/map/congestion 엔드포인트 추가
+@app.get("/api/map/congestion")
+async def get_congestion():
+    # DB에서 혼잡도 데이터 가져오기
+    data = get_congestion_data()
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)
+    if data:
+        return JSONResponse(content={"data": data}, status_code=200)
+    else:
+        return JSONResponse(content={"message": "데이터 없음"}, status_code=404)
+
+# React 정적 파일 서빙
+# 아래 이 줄만 유지
+app.mount("/", StaticFiles(directory="static", html=True), name="static")
+
